@@ -237,8 +237,10 @@ bar(1,2,3,4);
 // [2, 3, 4]
 
 
-
-
+/*rest运算符配合解构使用*/
+var [a, ...rest] = [1,2,3,4];
+console.log(a);//1
+console.log(rest);//[2, 3, 4]
 
 
 
