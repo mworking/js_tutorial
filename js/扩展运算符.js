@@ -24,11 +24,31 @@ console.log(d); // 1
 console.log(f); // 3
 console.log(i); // 6
 
+/* *函数传参解构：*/
+var array = ['this is a string', 2, 3];
+function fn1([a,b,c]) {
+    console.log(a);
+    console.log(b);
+    console.log(c);
+}
 
+fn1(array);
+//this is a string
+//2
+//3
 
-
-
-
+/* *for 循环解构*/
+var array = [[11,12],[21,22],[31,32]];
+for (let [a,b] of array){
+    console.log(a);
+    console.log(b);
+}
+//11
+//12
+//21
+//22
+//31
+//32
 
 
 /*** 扩展运算符*****************************
