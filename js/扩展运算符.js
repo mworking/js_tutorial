@@ -116,7 +116,7 @@ obj = {
     age: [1, 2, 3]
 }
 
-{name, sex, age: [a, b, c]} = obj;
+var {name, sex, age: [a, b, c]} = obj;
 console.log(c);
 
 /*嵌套对象属性重名，解构时需要更改变量名：*/
