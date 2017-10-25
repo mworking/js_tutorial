@@ -50,6 +50,125 @@ for (let [a,b] of array){
 //31
 //32
 
+/* *对象赋值解构*/
+var obj = {
+    name:'chris',
+    sex:'male',
+    age:'28',
+    son:{
+        sonname:'apple',
+        sonsex:'male',
+        sonage:1
+    }
+};
+
+var {name,sex,age,son} = obj;
+console.log(name + " " + sex + " " + age);   //chris male 28
+console.log(son);       //{sonname: "apple", sonsex: "male", sonage: 1}
+
+
+/* 对象传参解构*/
+var obj = {
+    name: 'chris',
+    sex: 'male',
+    age: 26,
+    son: {
+        sonname: '大熊',
+        sonsex: 'male',
+        sonage: 1
+    }
+};
+
+function fn2({sex, age, name}) {
+    console.log(name + " " + sex + " " + age)
+}
+
+fn2(obj);   //chris male 26
+
+/* 变量名与对象属性名不一致解构*/
+var obj = {
+    name: 'chris',
+    sex: 'male',
+    age: 26
+};
+var {name: nickname, age: howold} = obj;
+console.log(nickname + ' ' + howold); //chris 26
+
+/*嵌套对象解构：*/
+var obj = {
+    name: 'chris',
+    sex: 'male',
+    age: 26,
+    son: {
+        sonname: '大熊',
+        sonsex: 'male',
+        sonage: 1
+    }
+};
+var {name, sex, age, son: {sonname, sonsex, sonage}} = obj;
+console.log(sonname + ' ' + sonsex + ' ' + sonage);
+//大熊 male 1
+
+//Babel暂不支持这种嵌套解构
+obj = {
+    name: 'chris',
+    sex: 'male',
+    age: [1, 2, 3]
+}
+
+{name, sex, age: [a, b, c]} = obj;
+console.log(c);
+
+/*嵌套对象属性重名，解构时需要更改变量名：*/
+var obj = {
+    name: 'chris',
+    sex: 'male',
+    age: 26,
+    son: {
+        name: '大熊',
+        sex: 'male',
+        age: 1
+    }
+};
+//赋值解构
+var {name: fathername, son: {name, sex, age}} = obj;
+console.log(fathername); //chris
+console.log(name); //大熊
+
+//传参解构
+function fn3({sex, age, name, son: {name: sonname}}) {
+    console.log(name + ' ' + sex + ' ' + age + ' ' + sonname);
+}
+
+fn3(obj);
+//chris male 26 大熊
+
+/*循环解构对象：*/
+var arr = [{name: 'chris', age: 26}, {name: 'jack',    age: 27}, {name: 'peter',age: 28}];
+
+for (let {age, name} of arr) {
+    console.log(name + ' ' + age);
+}
+//chris 26
+//jack 27
+//peter 28
+
+/*解构的特殊应用场景*/
+//变量互换
+var x = 1,
+    y = 2;
+var [x, y] = [y, x];
+console.log(x); //2
+console.log(y); //1
+
+//字符串解构
+var str = 'love';
+var [a, b, c, d] = str;
+console.log(a);//l
+console.log(b);//o
+console.log(c);//v
+console.log(d);//e
+
 
 /*** 扩展运算符*****************************
  *
