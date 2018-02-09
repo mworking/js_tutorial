@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<div id="box">
+    <a id="child">事件冒泡</a>
+</div>
+
+<script>
+    var box = document.getElementById('box'),
+        child = document.getElementById('child');
+
+    child.addEventListener('click', function() {
+        alert('我是目标事件');
+    }, true);
+
+    box.addEventListener('click', function() {
+        alert('事件冒泡至DIV');
+    }, true);
+</script>
+
+
+<a id="go" href="https://www.baidu.com/">禁止跳转</a>
+<script>
+    var go = document.getElementById('go');
+    function goFn(cc) {
+        cc.preventDefault();
+        console.log('我没有跳转！');
+    }
+    go.addEventListener('click', goFn, false);
+</script>
+
+<!--<a id="ok">禁止跳转</a>-->
+<!--<script>-->
+    <!--var ok = document.getElementById('ok');-->
+    <!--function goFn() {-->
+        <!--var i;-->
+        <!--for( i = 0; i < arguments.length ; i++) {-->
+            <!--console.log(arguments[i]);-->
+        <!--}-->
+    <!--}-->
+    <!--ok.addEventListener('click', goFn, false);-->
+<!--</script>-->
+
+<a id="ok">禁止跳转</a>
+<script>
+    var ok = document.getElementById('ok');
+    function goFn(dd) {
+        var i;
+        for( i = 0; i < arguments.length ; i++) {
+            console.log(arguments[i]);
+        }
+    }
+    ok.addEventListener('click', goFn(), false);
+</script>
+
+
+
+
+</body>
+</html>
